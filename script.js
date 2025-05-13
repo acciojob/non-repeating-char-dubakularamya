@@ -1,18 +1,17 @@
 function firstNonRepeatedChar(str) {
- let str = "aabbcdd";
- let res = null;
-for (let char of str) {
-    if (
-        str.indexOf(char)
-        ===
-        str.lastIndexOf(char)
-    ) {
-        res = char;
-        break;
+    const charCount = {}; // Object to store character frequency
+
+    // Count occurrences of each character
+    for (let char of str) {
+        charCount[char] = (charCount[char] || 0) + 1;
     }
+
+    // Find the first character that appears only once
+    for (let char of str) {
+        if (charCount[char] === 1) {
+            return char;
+        }
+    }
+
+    return null; // Return null if no unique character is found
 }
-console.log("Input: " + str);
-console.log("Non-repeating character: " + res);
-}
-const input = prompt("Enter a string");
-alert(firstNonRepeatedChar(input)); 
